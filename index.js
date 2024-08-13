@@ -103,9 +103,9 @@ const students = [
   console.log(findStudentById(10,students));
   
   function getStudentsByCourse(course, students) {
-    students.filter(student => student.courses.find((c)=>c==course));
+    return students.filter(student => student.courses.find((c)=>c==course));
+     
   }
   
-   console.log(getStudentsByCourse("Math",students));
-
+   console.log(getStudentsByCourse("Music",students));
   
