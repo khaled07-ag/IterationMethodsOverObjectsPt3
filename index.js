@@ -69,10 +69,43 @@ const students = [
     return student.courses.length
   }
   console.log(countCourses(students[1]));
+  
   function listAllCourses(students) {
-    let AllCourses = students.courses.from(new Set(students))
-    return AllCourses
+    const allCourses = [];
+  students.forEach(student => {
+    student.courses.forEach(course => {
+      if (!allCourses.includes(course)) {
+        allCourses.push(course);
+      }
+    });
+  });
+  return allCourses
   }
    console.log(listAllCourses(students));
+   function removeCourseFromStudent(student, course) {
+
+    const indexesToRemove = student.courses.filter((elem, index) => elem === course).map(course => student.courses.indexOf(course));
   
+  
+    for (let i = indexesToRemove.length - 1; i >= 0; i--) {
+      student.courses.splice(indexesToRemove[i], 1);
+    }
+  
+    return student;
+  }
+  console.log(removeCourseFromStudent(students[6],"Science"));
+
+  function findStudentById(studentId, students) {
+    return students[studentId-1]
+  
+  }
+  
+  console.log(findStudentById(10,students));
+  
+  function getStudentsByCourse(course, students) {
+    students.filter(student => student.courses.find((c)=>c==course));
+  }
+  
+   console.log(getStudentsByCourse("Math",students));
+
   
